@@ -29,15 +29,9 @@ async function cycleChannel(channel_id) {
             if (response.status === 429) {
                 let reset = response.headers.get('retry-after');
                 let timeMs = parseFloat(reset) * 1000;
-                await new Promise((resolve, reject) => setTimeout(resolve, timeMs));
-                console.log('%c' + response.status, 'color: #ff0000; font-size: 200px');
-            } else if (response.status === 403) {
-                console.log('%c' + response.status, 'color: #ffff00; font-size: 200px');
-            } else if (response.status === 200) {
-                console.log('%c' + response.status, 'color: #1f51ff; font-size: 200px');
-            } else if (response.status === 404) {
-                console.log('%c' + response.status, 'color: #99ff99; font-size: 200px');
+                await new Promise((resolve, reject) => setTimeout(resolve, timeMs))
             }
+            console.log(response.status);
         }
     }
 }
